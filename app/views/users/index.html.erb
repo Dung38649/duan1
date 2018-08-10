@@ -1,0 +1,12 @@
+<div class="bigbox">
+  <div class="box">
+    <table class="table-minimal" id="customers">
+      <tbody>
+        <% @users.each do |user| %>
+          
+            <%= render user %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
