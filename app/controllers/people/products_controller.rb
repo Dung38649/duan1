@@ -1,8 +1,16 @@
-class ProductsController < ApplicationController
+class People::ProductsController < ApplicationController
+    before_action :require_user
+
+    def require_user
+        if current_user.blank?
+            redirect_to products_path
+
+        end
+           
+    end
 
     def index
         @products = Product.all  
-        authorize @products
 
         if params[:order]
             @products = Product.order(price: params[:order])  
@@ -15,7 +23,6 @@ class ProductsController < ApplicationController
 
     def show
         @product = Product.find(params[:id])
-        authorize @product
     end
         
     def create
@@ -29,6 +36,20 @@ class ProductsController < ApplicationController
             render 'new'
         end
     end
+
+    def edit
+        @product = Product.find(params[:id])
+    end
+
+    def update
+        @product = Product.find(params[:id])
+
+        if @product.update(product_params)
+            redirect_to @product
+        else
+            render 'edit'
+        end
+    end 
 
     private
     def product_params

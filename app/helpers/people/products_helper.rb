@@ -1,0 +1,2 @@
+module People::ProductsHelper
+end

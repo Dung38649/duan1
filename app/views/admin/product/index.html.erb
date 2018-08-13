@@ -1,8 +1,9 @@
+
 <div class="nav-item dropdown pull-right">
    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sắp xếp theo</a>
    <div class="dropdown-menu">
-      <a href="products?order=asc">Giá tăng</a><br>
-      <a href="products?order=desc">Giá giảm</a>
+      <a href="/products?order=asc">Giá tăng</a><br>
+      <a href="/products?order=desc">Giá giảm</a>
    </div><br><br>
 </div>
 <div class="clearfix"></div>
@@ -25,7 +26,8 @@
                      </div>
                      <div style="padding:5%; padding-left:15%">
                         <%= link_to 'Chi tiết', product_path(p), class: "btn btn-primary btn-lg " %>
-                        
+                        <%= link_to 'Chỉnh sửa', edit_admin_product_path(p), class: "btn btn-primary btn-lg " %> 
+                        <%= link_to 'Xóa ', product_path(p), class:"btn btn-primary btn-lg",         method: :delete,data: { confirm: 'Ban chat chan xoa' } %>
                      </div>
                   </div>
                </div>

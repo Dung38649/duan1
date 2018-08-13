@@ -6,10 +6,16 @@ class User < ApplicationRecord
 
 	def set_default_role
 		self.role ||= :user
-	end
+  end
+
+  def admin?
+    self.role == "admin"
+  end
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable:admin
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+
 end
