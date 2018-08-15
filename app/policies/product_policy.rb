@@ -1,8 +1,7 @@
 class ProductPolicy
     attr_reader :user, :product
     def initialize( current_user, product)
-        p "-----------"
-        p current_user
+      
         @user = current_user
         @product = product
       end

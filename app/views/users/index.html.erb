@@ -9,11 +9,21 @@
         <th> Xóa: </th>
       </tr>
       <% @users.each do |user| %>
-        
-          <%= render user %>
+        <tr>
+        <%= form_for(user) do |f|  %>
+          <td><%= link_to user.email, user %></td>
+          <td ><%= f.select(:role, User.roles.keys.map ) %></td>
+          <td><%= f.submit ' Confirm Access ', class: "btn btn-primary btn-md" %></td>
+          <% if policy(user).destroy? %>
+          <td><%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, 
+                :method => :delete, :class => 'button') unless user == current_user %></td>
+          <% end %>
+        <% end %>
+        </tr>
       <% end %>
       </tbody>
     </table><br>
     <%= link_to "Trở về",admin_products_path, style: "margin-left:80%" %><br><br>
+     
   </div>
 </div>

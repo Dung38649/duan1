@@ -37,19 +37,33 @@
                <a href="/welcome/index">Giới thiệu</a>
             </li>
             <li class="dropdown">
-               <a
-                  href="#"
-                  class="dropdown-toggle"
-                  data-toggle="dropdown"
-                  role="button"
-                  aria-haspopup="true"
-                  aria-expanded="false">Phân loại
-               <span class="caret"></span></a>
-               <ul class="dropdown-menu">
-                  <%Category.all.each do |c| %><br>
-                  <%= link_to c.name, category_path(c) %>
-                  <% end %>
-               </ul>
+                <% if current_user %>
+                    <% if  current_user.role == "admin" %>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
+                        aria-expanded="false">Phân loại<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <%Category.all.each do |c| %><br>
+                                <%= link_to c.name, admin_category_path(c) %>
+                            <% end %>
+                        </ul>
+                    <% else %>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
+                        aria-expanded="false">Phân loại<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <%Category.all.each do |c| %><br>
+                                <%= link_to c.name, people_category_path(c) %>
+                            <% end %>
+                        </ul>
+                    <% end %>
+                <% else %>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
+                    aria-expanded="false">Phân loại<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <%Category.all.each do |c| %><br>
+                            <%= link_to c.name, category_path(c) %>
+                        <% end %>
+                    </ul>
+                <% end %>  
             </li>
          </ul>
          <form class="navbar-form navbar-left">

@@ -20,6 +20,11 @@ Rails.application.routes.draw do
     resources :products
   end
 
+  namespace :people do
+    resources :categories
+  end
+
+
   resources :products
   resources :categories
   resources :users

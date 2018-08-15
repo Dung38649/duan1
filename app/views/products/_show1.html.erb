@@ -1,0 +1,35 @@
+
+<p class="edit">Chi tiết sản phẩm </p>
+<div class="front1">
+<div class="panel panel-primary">
+   <div class="panel-heading">Tên sản phẩm: <%= @product.name%></div>
+   <div class="panel-body text-center" style="min-height: 330px; background: #fff;">
+      <%= image_tag @product.images, class: "img-responsive"%>
+   </div>
+   <div class="panel-body" style="padding:10px">
+      <h4>Giá :</h4>
+      <p style="padding-left:30px"><%= number_to_currency(@product.price, unit:"đ", format: "%n %u") %></p>
+   </div>
+   <div class="panel-body"  style="min-height:200px; padding: 10px">
+      <h4>Giới thiệu :</h4>
+      <p style="text-indent: 30px"><%= @product.description %></p>
+   </div>
+</div>
+<br>
+<div style="padding-left:320px; margin-bottom:20px">
+    <% if current_user %>
+        <% if current_user.role == "admin" %>
+            <%= link_to 'Chỉnh sửa', edit_admin_product_path(@product), class: "click " %>
+            <%= link_to 'Trở về', admin_products_path, class: "click " %>
+        <% else %>
+            <%= link_to 'Chỉnh sửa', edit_people_product_path(@product), class: "click " %>
+            <%= link_to 'Trở về', people_products_path, class: "click " %>
+
+        <% end %>
+    <% else %>
+       <%= link_to 'Trở về', products_path, class: "click " %>
+    <% end %>
+</div>
+
+  
+  

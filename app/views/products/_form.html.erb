@@ -50,9 +50,10 @@
 </div>
 <% end %>
 <div style="padding-left:1100px" >
-   <%= link_to 'Trở về', products_path %>
+   <%= link_to 'Trở về', admin_products_path %>
 </div>
 <% else %>
+
 <%= form_with model: [:people ,@product], local: true do |f| %>
 <div id="error_explanation">
    <% if @product.errors.any? %>
@@ -103,10 +104,11 @@
 </div>
 <% end %>
 <div style="padding-left:1100px" >
-   <%= link_to 'Trở về', products_path %>
+   <%= link_to 'Trở về', people_products_path %>
 </div>
 <% end %>
 <% else %>
+
 <%= form_with model: @product, local: true do |f| %>
 <div id="error_explanation">
    <% if @product.errors.any? %>

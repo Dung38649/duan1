@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
       if (@user.changed_attributes[:role] && @user.changed_attributes[:role] == "admin" && User.count_admin > 1)
         @user.update_attributes(secure_params)
-        redirect_to products_path, :notice => "User updated."
+        redirect_to people_products_path, :notice => "User updated."
       elsif (@user.changed_attributes[:role] && @user.changed_attributes[:role] != "admin" )
         @user.update_attributes(secure_params)
         redirect_to users_path, :notice => "User updated."
