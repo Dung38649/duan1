@@ -1,4 +1,4 @@
-<%= form_with model: @product, local: true do |f| %>
+<%= form_with model: [:people ,@product], local: true do |f| %>
 <div id="error_explanation">
    <% if @product.errors.any? %>
    <h2>
@@ -48,5 +48,5 @@
 </div>
 <% end %>
 <div style="padding-left:1100px" >
-   <%= link_to 'Trở về', products_path %>
+   <%= link_to 'Trở về', people_products_path %>
 </div>

@@ -1,7 +1,9 @@
 class ProductPolicy
     attr_reader :user, :product
-    def initialize user, product
-        @user = user
+    def initialize( current_user, product)
+        p "-----------"
+        p current_user
+        @user = current_user
         @product = product
       end
 
@@ -15,12 +17,12 @@ class ProductPolicy
     end
 
     def create?
-        @user == @user || @user.admin?
+        @user.present?
     end
 
     def edit?
-        @user.admin? || @user == @user
-
+        @user.present?
+        # @user.admin? 
         # Giống nhau
         # if @user.admin? 
         #     true
@@ -30,10 +32,17 @@ class ProductPolicy
     end
 
     def update?
-        @user == @user || @user.admin?
+        @user.present?
     end
 
-    def destroy
-        @user.admin?
+    def destroy?
+        # if @user
+        #     @user.admin?
+        # else
+        #     false
+        # end
+        
+        
+        @user.try(:admin?)
     end
 end

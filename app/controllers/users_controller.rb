@@ -20,22 +20,28 @@ class UsersController < ApplicationController
     def update
       @user = User.find(params[:id])
       authorize @user
-      if (current_user.admin? == true || @user.admin == "1" )
+      @user.assign_attributes(secure_params)
 
-      else
-
-      if @user.update_attributes(secure_params)
+      if (@user.changed_attributes[:role] && @user.changed_attributes[:role] == "admin" && User.count_admin > 1)
+        @user.update_attributes(secure_params)
+        redirect_to products_path, :notice => "User updated."
+      elsif (@user.changed_attributes[:role] && @user.changed_attributes[:role] != "admin" )
+        @user.update_attributes(secure_params)
         redirect_to users_path, :notice => "User updated."
       else
         redirect_to users_path, :alert => "Unable to update user."
       end
+     
     end 
   
     def destroy
-      user = User.find(params[:id])
-      authorize user
-      user.destroy
-      redirect_to edit_product_path, :notice => "User deleted."
+
+      @user = User.find(params[:id])
+
+      authorize @user
+      
+      @user.destroy
+      redirect_to users_path, :notice => "User deleted."
     end
   
     private

@@ -1,17 +1,11 @@
 class People::ProductsController < ApplicationController
-    before_action :require_user
+    before_action :authenticate_user!
 
-    def require_user
-        if current_user.blank?
-            redirect_to products_path
-
-        end
-           
-    end
 
     def index
+        
         @products = Product.all  
-
+        p current_user
         if params[:order]
             @products = Product.order(price: params[:order])  
         end
@@ -45,7 +39,7 @@ class People::ProductsController < ApplicationController
         @product = Product.find(params[:id])
 
         if @product.update(product_params)
-            redirect_to @product
+            redirect_to [:people, @product]
         else
             render 'edit'
         end

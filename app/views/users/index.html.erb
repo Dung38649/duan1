@@ -2,12 +2,18 @@
   <div class="box">
     <table class="table-minimal" id="customers">
       <tbody>
-        <% @users.each do |user| %>
-          
-            <%= render user %>
-        <% end %>
+      <tr>
+        <th> Email: </th>
+        <th> Quyền truy cập: </th>
+        <th> Lưu quyền truy cập: </th>
+        <th> Xóa: </th>
+      </tr>
+      <% @users.each do |user| %>
+        
+          <%= render user %>
+      <% end %>
       </tbody>
     </table><br>
-    <%= link_to "Trở về",admin_product_index_path, style: "margin-left:80%" %><br><br>
+    <%= link_to "Trở về",admin_products_path, style: "margin-left:80%" %><br><br>
   </div>
 </div>

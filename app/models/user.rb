@@ -12,6 +12,10 @@ class User < ApplicationRecord
     self.role == "admin"
   end
 
+  def self.count_admin
+    User.where('role = 1').count
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable:admin
   devise :database_authenticatable, :registerable,

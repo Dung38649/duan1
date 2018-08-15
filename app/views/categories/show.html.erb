@@ -8,7 +8,7 @@
             <div class="flipper">
                <div class="front">
                   <div class="panel panel-primary">
-                     <div class="panel-heading"><%= p.name%></div>
+                    <div class="panel-heading"><%= p.name%></div>
                      <div class="panel-body text-center" style="min-height: 430px; background: #fff;">
                         <%= image_tag p.images, class: "img-responsive"%>
                      </div>
@@ -18,8 +18,12 @@
                      </div>
                      <div style="padding:15%">
                         <%= link_to 'Chi tiết', product_path(p), class: "btn btn-primary btn-lg " %>
-                        <%= link_to 'Chỉnh sửa', edit_product_path(p), class: "btn btn-primary btn-lg " %> 
-                        <%= link_to 'Xóa ', product_path(p), class:"btn btn-primary btn-lg",         method: :delete,data: { confirm: 'Ban chat chan xoa' } %>
+                        <% if policy(p).update? %>
+                            <%= link_to 'Chỉnh sửa', edit_product_path(p), class: "btn btn-primary btn-lg " %> 
+                        <% end %>
+                        <% if policy(p).destroy? %>
+                        <%= link_to 'Xóa ', admin_product_path(p), class:"btn btn-primary btn-lg", method: :delete, data: { confirm: 'Ban chat chan xoa' } %>
+                        <% end %>
                      </div>
                   </div>
                </div>

@@ -1,11 +1,10 @@
-class Admin::ProductController < ApplicationController
+class Admin::ProductsController < ApplicationController
 
-    before_action :require_admin
+   before_action :authenticate_user!
+   before_action :require_admin
 
     def require_admin
-        if current_user.blank?
-            redirect_to products_path
-        elsif current_user.admin? == false
+        if current_user.admin? == false
             redirect_to people_products_path
         end
     end
@@ -46,7 +45,7 @@ class Admin::ProductController < ApplicationController
         @product = Product.find(params[:id])
 
         if @product.update(product_params)
-            redirect_to @product
+            redirect_to [:admin, @product]
         else
             render 'edit'
         end
