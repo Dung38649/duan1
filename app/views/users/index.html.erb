@@ -13,9 +13,9 @@
         <%= form_for(user) do |f|  %>
           <td><%= link_to user.email, user %></td>
           <td ><%= f.select(:role, User.roles.keys.map ) %></td>
-          <td><%= f.submit ' Confirm Access ', class: "btn btn-primary btn-md" %></td>
+          <td><%= f.submit ' Xát nhận ', class: "btn btn-primary btn-md" %></td>
           <% if policy(user).destroy? %>
-          <td><%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, 
+          <td><%= link_to("Xóa user", user_path(user), :data => { :confirm => "Are you sure?" }, 
                 :method => :delete, :class => 'button') unless user == current_user %></td>
           <% end %>
         <% end %>
@@ -27,3 +27,4 @@
      
   </div>
 </div>
+  

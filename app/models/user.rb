@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   
-
+  mount_uploader :avatar, AvatarUploader
   enum role: [:user, :admin]
 	after_initialize :set_default_role, :if => :new_record?
 

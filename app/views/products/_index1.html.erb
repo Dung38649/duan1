@@ -49,11 +49,9 @@
                         <% end %> 
                         <% if policy(p).update? %>
                         <% if current_user.role == "admin" %>
-                            <%= link_to 'Chỉnh sửa', edit_admin_product_path(p), class: "btn btn-primary
-                           btn-lg " %>
+                            <%= link_to 'Chỉnh sửa', edit_admin_product_path(p), class: "btn btn-primary btn-lg " %>
                         <% else %>
-                            <%= link_to 'Chỉnh sửa', edit_people_product_path(p), class: "btn btn-primary
-                           btn-lg " %>
+                            <%= link_to 'Chỉnh sửa', edit_people_product_path(p), class: "btn btn-primary btn-lg " %>
                         <% end %>
                         <% end %>
                         <% if policy(p).destroy? %>
