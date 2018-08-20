@@ -47,7 +47,7 @@ GEM
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
-    autoprefixer-rails (9.1.0)
+    autoprefixer-rails (9.1.2)
       execjs
     bcrypt (3.1.12)
     bindex (0.5.0)
@@ -83,7 +83,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
-    devise (4.4.3)
+    devise (4.5.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 6.0)
@@ -123,7 +123,7 @@ GEM
     mime-types-data (3.2018.0812)
     mimemagic (0.3.2)
     mini_magick (4.8.0)
-    mini_mime (1.0.0)
+    mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     msgpack (1.2.4)
@@ -133,7 +133,7 @@ GEM
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
-    public_suffix (3.0.2)
+    public_suffix (3.0.3)
     puma (3.12.0)
     pundit (2.0.0)
       activesupport (>= 3.0.0)
@@ -207,7 +207,7 @@ GEM
     turbolinks-source (5.1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.17)
+    uglifier (4.1.18)
       execjs (>= 0.3.0, < 3)
     warden (1.2.7)
       rack (>= 1.0)
@@ -256,4 +256,4 @@ RUBY VERSION
    ruby 2.2.5p319
 
 BUNDLED WITH
-   1.16.2
+   1.16.3
