@@ -41,7 +41,9 @@ class UsersController < ApplicationController
     end 
 
     def update_user
+      
       @user = User.find(params[:id])
+      authorize @user 
       if @user.update(user_params)
         redirect_to @user
       else

@@ -25,7 +25,12 @@ class UserPolicy
         @current_user.admin?
       end
     end
-  
+
+    def update_user?
+      p update?
+      update?
+    end
+
     def destroy?
       return false if @current_user == @user
       return false if @user.admin?
