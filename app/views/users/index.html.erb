@@ -11,7 +11,7 @@
       <% @users.each do |user| %>
         <tr>
         <%= form_for(user) do |f|  %>
-          <td><%= link_to user.email, edit_user_registration_path %></td>
+          <td><%= link_to user.email, user%></td>
           <td ><%= f.select(:role, User.roles.keys.map ) %></td>
           <td><%= f.submit ' Xát nhận ', class: "btn btn-primary btn-md" %></td>
           <% if policy(user).destroy? %>

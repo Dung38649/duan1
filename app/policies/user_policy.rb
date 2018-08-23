@@ -10,6 +10,9 @@ class UserPolicy
       @current_user.admin?
     end
 
+    def edit?
+      @current_user.admin?
+    end 
     def show?
       @current_user.admin? || @current_user == @user
     end

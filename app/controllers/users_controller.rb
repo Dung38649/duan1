@@ -12,7 +12,12 @@ class UsersController < ApplicationController
       @users = User.all
       authorize User
     end
-  
+
+    def edit
+      @user = User.find(params[:id])
+    
+    end
+
     def show
       @user = User.find(params[:id])
       authorize @user
@@ -20,9 +25,10 @@ class UsersController < ApplicationController
     
     def update
       @user = User.find(params[:id])
+      p"--------------------------------------------"
       authorize @user
+      p"--------------------------------------------"
       @user.assign_attributes(secure_params)
-
       if (@user.changed_attributes[:role] && @user.changed_attributes[:role] == "admin" && User.count_admin > 1)
         @user.update_attributes(secure_params)
         redirect_to people_products_path, :notice => "User updated."
@@ -30,6 +36,8 @@ class UsersController < ApplicationController
         @user.update_attributes(secure_params)
         redirect_to users_path, :notice => "User updated."
       else
+        # except_secure_params = secure_params.except(:role)
+        @user.update_attributes(secure_params)
         redirect_to users_path, :alert => "Unable to update user."
       end
      
@@ -48,7 +56,7 @@ class UsersController < ApplicationController
     private
   
     def secure_params
-      params.require(:user).permit(:role, :name, :password)
+      params.require(:user).permit(:role, :password, :password_confirmation, :name, :avatar)
     end
     
 end

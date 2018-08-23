@@ -1,15 +1,16 @@
-<h2>Đăng nhập</h2>
-<div style="margin-bottom:140px">
+<div class="header-main">
+		       <h1>Đăng nhập</h1>
+</div>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-group">
-    <label for="exampleInputEmail1">Nhập email</label>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Nhập email", class: "form-control",id: "exampleInputEmail1" %>
-    <small id="emailHelp" class="form-text text-muted">Nhập email đúng cú pháp (ten@email.com)</small>
+    <label>Nhập email</label>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: " Nhập email", class: "form-control"%>
+    <small id="emailHelp" class="form-text text-muted">(ten@email.com)</small>
   </div>
 
-   <div class="">
-   <label for="exampleInputPassword1">Password</label>
-    <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "exampleInputPassword1", placeholder: "Password" %>
+   <div class="form-group">
+   <label>Password</label>
+    <%= f.password_field :password, autocomplete: "off", class: "form-control",  placeholder: "" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
@@ -26,3 +27,4 @@
 
 <%= render "devise/shared/links" %>
 </div>
+  
