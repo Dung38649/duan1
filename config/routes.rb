@@ -24,10 +24,12 @@ Rails.application.routes.draw do
     resources :categories
   end
 
-
   resources :products
   resources :categories
-  resources :users
-  
+  resources :users do
+    member do
+      patch :update_user
+    end
+  end
   root 'products#index'
 end
