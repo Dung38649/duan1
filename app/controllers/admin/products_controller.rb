@@ -10,8 +10,8 @@ class Admin::ProductsController < ApplicationController
     end
 
     def index
-        @products = Product.where('id>1 && id<100')
-
+        @search = Product.search(params[:q])
+        @products = @search.result.all
         if params[:order]
             @products = Product.order(price: params[:order])  
         end

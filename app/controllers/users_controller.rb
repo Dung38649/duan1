@@ -17,10 +17,9 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       authorize @user
     end
+    
     def update
       @user = User.find(params[:id])
-      @user.avatar = params[:file]
-  
       authorize @user
       @user.assign_attributes(secure_params)
 
@@ -49,7 +48,7 @@ class UsersController < ApplicationController
     private
   
     def secure_params
-      params.require(:user).permit(:role)
+      params.require(:user).permit(:role, :name, :password)
     end
     
 end

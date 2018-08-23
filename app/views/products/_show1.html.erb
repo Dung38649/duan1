@@ -3,8 +3,8 @@
 <div class="front1">
 <div class="panel panel-primary">
    <div class="panel-heading">Tên sản phẩm: <%= @product.name%></div>
-   <div class="panel-body text-center" style="min-height: 330px; background: #fff;">
-      <%= image_tag @product.images, class: "img-responsive"%>
+   <div class="panel-body text-center" style="height: 470px; background: #fff;">
+      <%= image_tag @product.images,width:'350px', class: "img-responsive" %>
    </div>
    <div class="panel-body" style="padding:10px">
       <h4>Giá :</h4>
@@ -16,7 +16,7 @@
    </div>
 </div>
 <br>
-<div style="padding-left:320px; margin-bottom:20px">
+<div class= "show1">
     <% if current_user %>
         <% if current_user.role == "admin" %>
             <%= link_to 'Chỉnh sửa', edit_admin_product_path(@product), class: "click " %>

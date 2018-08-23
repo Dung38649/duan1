@@ -77,3 +77,4 @@ gem 'carrierwave', '~> 1.0'
 # cập nhật ảnh dại diện cho user và admin
 gem 'mini_magick', '~> 4.3'
 #  Dùng để thay đổi kích thước hình ảnh 
+gem "ransack"

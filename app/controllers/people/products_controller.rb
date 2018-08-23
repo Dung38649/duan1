@@ -4,7 +4,8 @@ class People::ProductsController < ApplicationController
 
     def index
         
-        @products = Product.all  
+        @products = Product.where('')
+        @search = Product.search(params[:q])
         p current_user
         if params[:order]
             @products = Product.order(price: params[:order])  

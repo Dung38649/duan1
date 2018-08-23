@@ -1,15 +1,17 @@
+
 <div class="nav-item dropdown pull-right">
+
    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
       aria-expanded="false">Sắp xếp <i class="fa fa-sort" aria-hidden="true"></i></a>
    <div class="dropdown-menu">
       <% if current_user %>
-      <% if current_user.role == "admin" %>
-        <a href="/admin/products?order=asc">Giá tăng</a><br>
-        <a href="/admin/products?order=desc">Giá giảm</a>
-      <% else %>
-        <a href="/people/products?order=asc">Giá tăng</a><br>
-        <a href="/people/products?order=desc">Giá giảm</a>
-      <% end %>
+        <% if current_user.role == "admin" %>
+            <a href="/admin/products?order=asc">Giá tăng</a><br>
+            <a href="/admin/products?order=desc">Giá giảm</a>
+        <% else %>
+            <a href="/people/products?order=asc">Giá tăng</a><br>
+            <a href="/people/products?order=desc">Giá giảm</a>
+        <% end %>
       <% else %>
         <a href="products?order=asc">Giá tăng</a><br>
         <a href="products?order=desc">Giá giảm</a>
@@ -17,7 +19,16 @@
    </div>
    <br><br>
 </div>
+
+<div class="nav-item dropdown pull-right">
+<%= search_form_for @search, class: "form-inline" do |f| %>
+   <%= f.text_field :name_cont, class: "form-control" %>
+   <button type="submit" class="btn btn-default">Tìm kiếm</button>
+<% end %>
+</div>
+
 <div class="clearfix"></div>
+
 <form class="form-inline my-2 my-lg-0" style="margin-left:950px"></form>
 <div class="container">
    <div class="row">
@@ -26,36 +37,32 @@
          <div class="card-container">
             <div class="flipper">
                <div class="front">
-                  <div class="panel panel-primary">
-                     <div class="panel-heading"><i class="fa fa-user-secret" aria-hidden="true"></i>&nbsp;&nbsp;<%= p.name%></div>
+                  <div class="panel panel-primary" style="height:550px">
+                     <div class="panel-heading"><i class="fa fa-user-secret" aria-hidden="true"></i></div>
                      <div
-                        class="panel-body text-center"
-                        style="min-height: 430px; background: #fff;">
-                        <%= image_tag p.images, class: "img-responsive"%>
+                        class="panel-body text-center" style="height:300px">
+                        <%= image_tag p.images, class: "img-responsive", width: '250'%>
                      </div>
-                     <div class="panel-body" style="padding-left:10%">
+                     <div class="panel-body">
                         <h4>Giá</h4>
                         <%= number_to_currency(p.price, unit:"đ", format: "%n %u") %>
                      </div>
-                     <div style="padding:5%; padding-left:15%">
+                     <div id="chucnang">
                         <%if current_user %>
                         <% if current_user.role == "admin" %>
-                            <%= link_to 'Chi tiết', admin_product_path(p), class: "btn btn-primary btn-lg " %>
+                            <%= link_to p.name, admin_product_path(p), class: "q btn btn-primary" %>
                         <% else %>
-                            <%= link_to 'Chi tiết', people_product_path(p), class: "btn btn-primary btn-lg " %>
+                            <%= link_to p.name, people_product_path(p), class: "q btn btn-primary" %>
                         <% end %>
                         <% else %>
-                            <%= link_to 'Chi tiết', product_path(p), class: "btn btn-primary btn-lg " %>
+                            <%= link_to p.name, product_path(p), class: "q btn btn-primary"%>
                         <% end %> 
                         <% if policy(p).update? %>
-                        <% if current_user.role == "admin" %>
-                            <%= link_to 'Chỉnh sửa', edit_admin_product_path(p), class: "btn btn-primary btn-lg " %>
-                        <% else %>
-                            <%= link_to 'Chỉnh sửa', edit_people_product_path(p), class: "btn btn-primary btn-lg " %>
-                        <% end %>
+                            <%= link_to 'Chỉnh sửa', edit_admin_product_path(p), class: "q btn btn-primary" %>
                         <% end %>
                         <% if policy(p).destroy? %>
-                        <%= link_to 'Xóa ', admin_product_path(p), class:"btn btn-primary btn-lg",
+                        
+                        <%= link_to 'Xóa ', admin_product_path(p), class:"q btn btn-primary",    
                            method: :delete,data: { confirm: 'Ban chat chan xoa' } %>
                         <% end %>
                      </div>

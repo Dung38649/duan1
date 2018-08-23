@@ -20,6 +20,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable:admin
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  
+  validates :avatar, presence: true
+  validates :name, presence: true
 
 end

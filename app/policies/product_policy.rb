@@ -31,7 +31,8 @@ class ProductPolicy
     end
 
     def update?
-        @user.present?
+        # @user.present?
+        @user.try(:admin?)
     end
 
     def destroy?

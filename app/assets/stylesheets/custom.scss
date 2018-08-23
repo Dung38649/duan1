@@ -5,27 +5,16 @@
     -moz-perspective: 1000px;
     transform-style: preserve-3d;
   }
-  .card-container.flipped .front {
-    transform: rotateY(180deg);
-  }
-  .card-container.flipped .back {
-    transform: rotateY(360deg);
-  }
+
   .card-container, .front, .back {
     width: 100%;
-    height: 750px;
+    height: 600px;
   }
   .flipper {
     transform-style: preserve-3d;
     position: relative;
   }
-  .front {
-    z-index: 2;
-    transform: rotateY(0deg);
-    -webkit-transform: rotateY(0deg);
-    -ms-transform: rotateY(0deg);
-    -moz-transform: rotateY(0deg);
-  }
+
   .back {
       background-color: #d9edf7;
     transform: rotateY(180deg);

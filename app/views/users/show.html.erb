@@ -1,5 +1,5 @@
 
-<h2>Thông tin đăng nhập</h2>
+<h2>Thông tin tài khoản</h2>
 
 <div class="panel-heading">Email: <%= @user.email if @user.email %></div>
 <div class="panel-heading">Mật khẩu: <%= '*'*(@user.try(:encrypted_password).try(:length).to_i)%></div>

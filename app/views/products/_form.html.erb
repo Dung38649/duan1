@@ -1,113 +1,3 @@
-<% if current_user %>
-<% if current_user.role == "admin" %>
-<%= form_with model: [:admin ,@product], local: true do |f| %>
-<div id="error_explanation">
-   <% if @product.errors.any? %>
-   <h2>
-      <%= pluralize(@product.errors.count, "Lỗi nhập sai tên") %>
-   </h2>
-   <ul>
-      <% @product.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-   </ul>
-   <% end %>
-</div>
-<div class="form-group" style="padding:20px;margin-bottom:20px">
-   <%= f.label :name, :class => "control-label col-sm-2 text-right h4" %>
-   <div class="col-sm-10">
-      <%= f.text_field :name, :class => "form-control", :placeholder=>"Nhập tên trên 3 kí tự" %>
-   </div>
-</div>
-<div class="form-group" style="padding:20px;margin-bottom:30px">
-   <%= f.label :Ảnh, :class => "control-label col-sm-2 text-right h4" %>
-   <div class="col-sm-10">
-      <%= f.text_area :images, :class => "form-control", :placeholder=>"Đường link ảnh" %>
-   </div>
-</div>
-<div class="form-group" style="padding:20px;margin-bottom:20px">
-   <%= f.label :Giá, :class => "control-label col-sm-2 text-right h4" %>
-   <div class="col-sm-10">
-      <%= f.number_field :price, :class => "form-control" %>
-   </div>
-</div>
-<div class="form-group" style="padding:20px;margin-bottom:30px">
-   <%= f.label :"Chi tiết", :class => "control-label col-sm-2 text-right h4" %>
-   <div class="col-sm-10">
-      <%= f.text_area :description, :class => "form-control", :placeholder=>"Nhập Chi tiết sản phẩm" %>
-   </div>
-</div>
-<div class="form-group" style="padding:20px;margin-bottom:30px">
-   <%= f.label :"Category", :class => "control-label col-sm-2 text-right h4" %>
-   <div class="col-sm-10" >
-      <%= f.collection_select :categories, Category.all, :id, :name %>
-   </div>
-</div>
-<div class="form-group" style="padding:20px;margin-left:1000px;margin-bottom:30px">
-   <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Lưu sản phẩm</button>
-   </div>
-</div>
-<% end %>
-<div style="padding-left:1100px" >
-   <%= link_to 'Trở về', admin_products_path %>
-</div>
-<% else %>
-
-<%= form_with model: [:people ,@product], local: true do |f| %>
-<div id="error_explanation">
-   <% if @product.errors.any? %>
-   <h2>
-      <%= pluralize(@product.errors.count, "Lỗi nhập sai tên") %>
-   </h2>
-   <ul>
-      <% @product.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-   </ul>
-   <% end %>
-</div>
-<div class="form-group" style="padding:20px;margin-bottom:20px">
-   <%= f.label :name, :class => "control-label col-sm-2 text-right h4" %>
-   <div class="col-sm-10">
-      <%= f.text_field :name, :class => "form-control", :placeholder=>"Nhập tên trên 3 kí tự" %>
-   </div>
-</div>
-<div class="form-group" style="padding:20px;margin-bottom:30px">
-   <%= f.label :Ảnh, :class => "control-label col-sm-2 text-right h4" %>
-   <div class="col-sm-10">
-      <%= f.text_area :images, :class => "form-control", :placeholder=>"Đường link ảnh" %>
-   </div>
-</div>
-<div class="form-group" style="padding:20px;margin-bottom:20px">
-   <%= f.label :Giá, :class => "control-label col-sm-2 text-right h4" %>
-   <div class="col-sm-10">
-      <%= f.number_field :price, :class => "form-control" %>
-   </div>
-</div>
-<div class="form-group" style="padding:20px;margin-bottom:30px">
-   <%= f.label :"Chi tiết", :class => "control-label col-sm-2 text-right h4" %>
-   <div class="col-sm-10">
-      <%= f.text_area :description, :class => "form-control", :placeholder=>"Nhập Chi tiết sản phẩm" %>
-   </div>
-</div>
-<div class="form-group" style="padding:20px;margin-bottom:30px">
-   <%= f.label :"Category", :class => "control-label col-sm-2 text-right h4" %>
-   <div class="col-sm-10" >
-      <%= f.collection_select :categories, Category.all, :id, :name %>
-   </div>
-</div>
-<div class="form-group" style="padding:20px;margin-left:1000px;margin-bottom:30px">
-   <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Lưu sản phẩm</button>
-   </div>
-</div>
-<% end %>
-<div style="padding-left:1100px" >
-   <%= link_to 'Trở về', people_products_path %>
-</div>
-<% end %>
-<% else %>
 
 <%= form_with model: @product, local: true do |f| %>
 <div id="error_explanation">
@@ -122,31 +12,31 @@
    </ul>
    <% end %>
 </div>
-<div class="form-group" style="padding:20px;margin-bottom:20px">
+<div class="form-group1">
    <%= f.label :name, :class => "control-label col-sm-2 text-right h4" %>
    <div class="col-sm-10">
       <%= f.text_field :name, :class => "form-control", :placeholder=>"Nhập tên trên 3 kí tự" %>
    </div>
 </div>
-<div class="form-group" style="padding:20px;margin-bottom:30px">
+<div class="form-group1">
    <%= f.label :Ảnh, :class => "control-label col-sm-2 text-right h4" %>
    <div class="col-sm-10">
-      <%= f.text_area :images, :class => "form-control", :placeholder=>"Đường link ảnh" %>
+      <%= f.file_field :images %>
    </div>
 </div>
-<div class="form-group" style="padding:20px;margin-bottom:20px">
+<div class="form-group1">
    <%= f.label :Giá, :class => "control-label col-sm-2 text-right h4" %>
    <div class="col-sm-10">
       <%= f.number_field :price, :class => "form-control" %>
    </div>
 </div>
-<div class="form-group" style="padding:20px;margin-bottom:30px">
+<div class="form-group1">
    <%= f.label :"Chi tiết", :class => "control-label col-sm-2 text-right h4" %>
    <div class="col-sm-10">
       <%= f.text_area :description, :class => "form-control", :placeholder=>"Nhập Chi tiết sản phẩm" %>
    </div>
 </div>
-<div class="form-group" style="padding:20px;margin-bottom:30px">
+<div class="form-group1">
    <%= f.label :"Category", :class => "control-label col-sm-2 text-right h4" %>
    <div class="col-sm-10" >
       <%= f.collection_select :categories, Category.all, :id, :name %>
@@ -158,7 +48,15 @@
    </div>
 </div>
 <% end %>
+
 <div style="padding-left:1100px" >
-   <%= link_to 'Trở về', products_path %>
-</div>
+<% if current_user %>
+    <% if current_user.role == "admin" %>
+        <%= link_to 'Trở về', admin_products_path %>
+    <% else %>
+        <%= link_to 'Trở về', people_products_path %>
+    <% end %>
+<% else%>
+    <%= link_to 'Trở về', products_path %>
 <% end %>
+</div>

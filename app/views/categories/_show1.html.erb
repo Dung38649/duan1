@@ -8,10 +8,10 @@
                <div class="front">
                   <div class="panel panel-primary">
                     <div class="panel-heading"><%= p.name%></div>
-                     <div class="panel-body text-center" style="min-height: 430px; background: #fff;">
+                     <div class="panel-body text-center" style="height: 400px; background: #fff;">
                         <%= image_tag p.images, class: "img-responsive"%>
                      </div>
-                     <div class="panel-body text-center" style="padding:10px">
+                     <div class="panel-body text-center" style="padding-left:10%">
                         <h4>Giá</h4>
                         <%= number_to_currency(p.price, unit:"đ", format: "%n %u") %>
                      </div>
