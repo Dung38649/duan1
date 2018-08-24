@@ -40,8 +40,7 @@ class UsersController < ApplicationController
       end 
     end 
 
-    def update_user
-      
+    def update_user  
       @user = User.find(params[:id])
       authorize @user 
       if @user.update(user_params)
