@@ -11,7 +11,7 @@ class Admin::ProductsController < ApplicationController
 
     def index
         @search = Product.search(params[:q])
-        @products = @search.result.all
+        @products = @search.result.paginate(:page => params[:page], :per_page => 6).order ( ' id DESC ' )
         if params[:order]
             @products = Product.order(price: params[:order])  
         end

@@ -3,7 +3,7 @@
 <div class="front1">
 <div class="panel panel-primary">
    <div class="panel-heading">Tên sản phẩm: <%= @product.name%></div>
-   <div class="panel-body text-center" style="height: 55    0px; float: left">
+   <div class="panel-body text-center" style="height: 550px; float: left">
       <%= image_tag @product.images.first.url, width:'300px', class: "img-responsive" %><br>
       <% @product.images.map(&:url).each do |url|%>
         <%= image_tag url, class: "img-responsive", style: "height: 140px; display: inline"%>
@@ -13,12 +13,18 @@
    </div><br><br>   
    <div class="panel-body" style="padding:10px">
       <h4>Giá :</h4>
-      <p style="padding-left:30px"><%= number_to_currency(@product.price, unit:"đ", format: "%n %u") %></p>
+      <p style="padding-left:30px "><%= number_to_currency(@product.price, unit:"đ", format: "%n %u") %></p>
    </div>
-   <div class="panel-body"  style="min-height:200px; padding: 10px">
+    <div class="panel-body">
+        <h4>Category : <%= @product.categories.first.name%></h4>   
+    </div>
+
+    <div class="panel-body"  style="min-height:200px; padding: 10px">
       <h4>Giới thiệu :</h4>
       <p style="text-indent: 30px"><%= @product.description %></p>
-   </div>
+    </div>
+ 
+</div>
 </div>
 <br>
 <div class= "show1">

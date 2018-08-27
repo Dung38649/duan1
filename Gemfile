@@ -83,3 +83,5 @@ gem 'kaminari'
   # Dùng để phân trang
 gem 'will_paginate', '~> 3.1.0'
   # Dùng để phân trang
+gem 'rails-i18n'
+  # Dùng đa ngôn ngữ

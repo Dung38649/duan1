@@ -4,8 +4,8 @@ class People::ProductsController < ApplicationController
 
     def index
         
-        @products = Product.where('')
         @search = Product.search(params[:q])
+        @products = @search.result.paginate(:page => params[:page], :per_page => 6).order ( ' id DESC ' )
         p current_user
         if params[:order]
             @products = Product.order(price: params[:order])  
