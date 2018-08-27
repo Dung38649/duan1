@@ -3,13 +3,14 @@
 <div class="front1">
 <div class="panel panel-primary">
    <div class="panel-heading">Tên sản phẩm: <%= @product.name%></div>
-   <div class="panel-body text-center" style="height: 470px; float: left">
+   <div class="panel-body text-center" style="height: 55    0px; float: left">
       <%= image_tag @product.images.first.url, width:'300px', class: "img-responsive" %><br>
       <% @product.images.map(&:url).each do |url|%>
-        <%= image_tag url, class: "img-responsive", style: "height: 100px; display: inline"%>
+        <%= image_tag url, class: "img-responsive", style: "height: 140px; display: inline"%>
       <% end %>
+    
       <%#= image_tag  @product.images.map(&:url), width:'100px', class: "img-responsive" %>
-   </div><br>
+   </div><br><br>   
    <div class="panel-body" style="padding:10px">
       <h4>Giá :</h4>
       <p style="padding-left:30px"><%= number_to_currency(@product.price, unit:"đ", format: "%n %u") %></p>
@@ -34,6 +35,3 @@
        <%= link_to 'Trở về', products_path, class: "click " %>
     <% end %>
 </div>
-
-  
-  

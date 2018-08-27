@@ -65,7 +65,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "font-awesome-rails"
 #gem kí hiệu
 
-gem 'jquery-rails'
+  gem 'jquery-rails'
 
 gem 'devise'
 #gem  đăng nhập
@@ -80,4 +80,6 @@ gem 'mini_magick', '~> 4.3'
 gem "ransack"
   # Dùng để tìm kiếm
 gem 'kaminari'
+  # Dùng để phân trang
+gem 'will_paginate', '~> 3.1.0'
   # Dùng để phân trang
